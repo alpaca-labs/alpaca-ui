@@ -1,0 +1,23 @@
+@import '../../../utils/style/global.mixin.scss';
+
+// auto generate color
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background: darken($bg, 5%);
+    transition: all 0.3s ease;
+    color: lighten($bg, 100%);
+    outline: none;
+    border: none;
+  }
+  &:active {
+    background: darken($bg, 10%);
+    color: lighten($bg, 100%);
+    outline: none;
+    border: none;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}

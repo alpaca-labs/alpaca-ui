@@ -1,0 +1,19 @@
+@import './button.mixin.scss';
+
+.btn {
+  color: white;
+  text-decoration: none;
+  padding: rem(12) rem(30);
+  border-radius: rem(5);
+  font-size: rem(16);
+  outline: none;
+  border: none;
+}
+
+.btn-primary {
+  @include button-bg(#26c536);
+}
+
+.btn-info {
+  @include button-bg(#4d80e0);
+}
