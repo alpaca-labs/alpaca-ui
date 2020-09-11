@@ -1,39 +1,31 @@
 import React from 'react'
-import styled from './styles/button.style.scss'
+import btnStyle from './styles/button.style.scss'
 
-interface Props {
-  onChange?: any
-  color?: 'info' | 'primary'
-  title?: string
-  link?: string
+import { Archive } from '../Icon/index'
+
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    color?: 'primary' | 'info'
+    icon?: string
 }
 
-const Button = (props: Props) => {
-  const { onChange, color, title, link } = props
-  return link ? (
-    <a
-      href={link}
-      className={
-        props.color
-          ? `${styled.btn} ${styled[`btn-${color}`]}`
-          : `${styled.btn} ${styled['btn-primary']}`
-      }
-      onChange={onChange}
-    >
-      {title}
-    </a>
-  ) : (
-    <button
-      className={
-        props.color
-          ? `${styled.btn} ${styled[`btn-${color}`]}`
-          : `${styled.btn} ${styled['btn-primary']}`
-      }
-      onChange={onChange}
-    >
-      {title}
-    </button>
-  )
+export const Button: React.FunctionComponent<IButton> = ({ children, className, color, icon, ...shared }) => {
+    const useClassName = className ? className : `${btnStyle.btn} ${btnStyle[`btn-${color}`]}`
+    return (
+        <button {...shared} className={useClassName}>
+            <div className={`${btnStyle['d-flex']}`}>
+                {icon ? (
+                    <label className={btnStyle['pr-1']}>
+                        <Archive />
+                    </label>
+                ) : (
+                    children
+                )}
+            </div>
+        </button>
+    )
 }
 
-export { Button }
+Button.defaultProps = {
+    type: 'button',
+    color: 'primary'
+}
