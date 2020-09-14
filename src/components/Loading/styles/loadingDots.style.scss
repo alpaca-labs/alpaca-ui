@@ -1,0 +1,61 @@
+@import '../../../utils/style/variable';
+
+.loadingDotsRoot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 -5%;
+  overflow: hidden;
+
+  .loadingDots {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $primary;
+    color: $primary;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: .5s;
+
+    &::before, &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
+
+    &::before {
+      left: -15px;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: $primary;
+      color: $primary;
+      animation: dotFlashing 1s infinite alternate;
+      animation-delay: 0s;
+    }
+
+    &::after {
+      left: 15px;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: $primary;
+      color: $primary;
+      animation: dotFlashing 1s infinite alternate;
+      animation-delay: 1s;
+    }
+  }
+
+  @keyframes dotFlashing {
+    0% {
+      background-color: $primary;
+    }
+    50%,
+    100% {
+      background-color: lighten($primary, 30%);
+    }
+  }
+}
