@@ -64,6 +64,7 @@
     "dependencies": {
         "@types/feather-icons": "^4.7.0",
         "babel-plugin-typescript-to-proptypes": "^1.4.1",
+        "clsx": "^1.1.1",
         "feather-icons": "^4.28.0"
     }
 }

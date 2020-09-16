@@ -1,19 +1,49 @@
-@import './button.mixin.scss';
-@import '../../../utils/style/global.style.scss';
+@import '../../../utils/style/_variable.scss';
 
-.btn {
-    color: white;
-    text-decoration: none;
-    padding: rem(12) rem(30);
-    border-radius: rem(5);
-    font-size: rem(16);
-    outline: none !important;
-    border: none !important;
-    &-primary {
-        @include button-bg(#26c536);
-    }
+.buttonRoot {
+  //base
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+  position: relative;
+  border-radius: 6px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px 16px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: rgba($dark, 0.05);
+  }
 
-    &-info {
-        @include button-bg(#4d80e0);
+  //primary
+  &.buttonPrimary {
+    color: $primary;
+    &:hover {
+      background-color: rgba($primary, 0.05);
     }
+  }
+  //secondary
+  &.buttonSecondary {
+    color: $secondary;
+    &:hover {
+      background-color: rgba($secondary, 0.05);
+    }
+  }
+
+  //filled
+  &.buttonFilled {
+    background-color: rgba($dark, 0.05);
+
+    &.buttonPrimary {
+      background-color: $primary;
+      color: $white;
+    }
+    &.buttonSecondary {
+      background-color: $secondary;
+      color: $white;
+    }
+  }
 }

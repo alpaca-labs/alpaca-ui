@@ -1,31 +1,39 @@
-import React from 'react'
-import btnStyle from './styles/button.style.scss'
+import clsx from 'clsx'
+import React, { useRef } from 'react'
+import {Ripple} from '../Ripple/index'
+import styles from './styles/button.style.scss'
 
-import { Archive } from '../Icon/index'
-
-interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    color?: 'primary' | 'info'
-    icon?: string
+interface IButton {
+  onClick?: any,
+  children?: any,
+  color?: string,
+  variant?: string
+  className?: string
 }
 
-export const Button: React.FunctionComponent<IButton> = ({ children, className, color, icon, ...shared }) => {
-    const useClassName = className ? className : `${btnStyle.btn} ${btnStyle[`btn-${color}`]}`
-    return (
-        <button {...shared} className={useClassName}>
-            <div className={`${btnStyle['d-flex']}`}>
-                {icon ? (
-                    <label className={btnStyle['pr-1']}>
-                        <Archive />
-                    </label>
-                ) : (
-                    children
-                )}
-            </div>
-        </button>
-    )
+const Button = ({ onClick, children, color, variant, className }: IButton) => {
+  const rippleRef:any = useRef()
+
+  const handleClick = (e:any) => {
+    rippleRef.current.addRipple(e)
+    if (typeof onClick === 'function') onClick(e)
+  }
+  return (
+    <button
+      className={clsx(
+        className,
+        styles.buttonRoot,
+        color === 'primary' && styles.buttonPrimary,
+        color === 'secondary' && styles.buttonSecondary,
+
+        variant === 'filled' && styles.buttonFilled
+      )}
+      onClick={handleClick}
+    >
+      {children}
+      <Ripple ref={rippleRef} color={variant === 'filled' ? null : color} />
+    </button>
+  )
 }
 
-Button.defaultProps = {
-    type: 'button',
-    color: 'primary'
-}
+export { Button }
