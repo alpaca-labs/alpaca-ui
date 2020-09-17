@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 
-import { Button, LoadingDots, Tab, Tabs } from 'alpaca-ui'
+import { Button, LoadingDots, Tab, Tabs, Icon } from 'alpaca-ui'
 import 'alpaca-ui/dist/index.css'
+const { Activity, Archive } = Icon
 
 const App = () => {
     const [activeKey, setActiveKey] = useState(0)
     return (
         <div className='container mt-5'>
             <Tabs activeKey={activeKey} onClick={setActiveKey}>
-                <Tab title='Apparel'>
+                <Tab title='Button'>
                     <div>
                         <p>Ini Button:</p>
                         <br></br>
@@ -30,12 +31,19 @@ const App = () => {
                         <Button className='mr-2' color='secondary'>
                             Secondary
                         </Button>
-                        <h3>Loading</h3>
-                        <LoadingDots />
                     </div>
                 </Tab>
-                <Tab title='Aksesoris'>tab2</Tab>
-                <Tab title='Printing'>tab3</Tab>
+                <Tab title='Icon'>
+                    <div>
+                        <Activity />
+                        <Archive />
+                    </div>
+                </Tab>
+                <Tab title='Loading'>
+                    <h3>Loading</h3>
+                    <LoadingDots />
+                </Tab>
+
             </Tabs>
         </div>
     )
