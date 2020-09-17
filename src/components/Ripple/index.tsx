@@ -2,26 +2,27 @@ import clsx from 'clsx'
 import React, { useState, useLayoutEffect, forwardRef, useImperativeHandle } from 'react'
 import styles from './styles/ripple.style.scss'
 
-const useDebouncedRippleCleanUp = (rippleCount:any, duration:any, cleanUpFunction:any) => {
+const useDebouncedRippleCleanUp = (rippleCount:number, cleanUpFunction:any) => {
     useLayoutEffect(() => {
-        let bounce:any = null
-        if (rippleCount > 0) {
-            clearTimeout(bounce)
+      let bounce:any = null;
+      if (rippleCount > 0) {
+        clearTimeout(bounce);
+  
+        bounce = setTimeout(() => {
+          cleanUpFunction();
+          clearTimeout(bounce);
+        }, 400);
+      }
+  
+      return () => clearTimeout(bounce);
+    }, [rippleCount, cleanUpFunction]);
+  };
+  
 
-            bounce = setTimeout(() => {
-                cleanUpFunction()
-                clearTimeout(bounce)
-            }, duration)
-        }
+const Ripple: React.ForwardRefExoticComponent<Pick<any, string | number | symbol> & React.RefAttributes<unknown>> = forwardRef(({ color }:any, ref) => {
+    const [rippleArray, setRippleArray]:any[] = useState([])
 
-        return () => clearTimeout(bounce)
-    }, [rippleCount, duration, cleanUpFunction])
-}
-
-const Ripple = forwardRef(({ duration = 400, color }:any, ref) => {
-    const [rippleArray, setRippleArray]:any = useState([])
-
-    useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
+    useDebouncedRippleCleanUp(rippleArray.length, () => {
         setRippleArray([])
     })
 
