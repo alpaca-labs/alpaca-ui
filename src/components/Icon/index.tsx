@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Archive: React.StatelessComponent<React.SVGAttributes<SVGElement>> = (props) => (
+const Archive: React.FC<React.SVGAttributes<SVGElement>> = (props) => (
     <svg
         width={24}
         height={24}
