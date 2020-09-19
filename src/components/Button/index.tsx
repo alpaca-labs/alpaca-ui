@@ -11,13 +11,14 @@ interface IButton {
   className?: string
 }
 
-const Button = ({ onClick, children, color, variant, className }: IButton) => {
-  const rippleRef:any = useRef()
+const Button:React.FC<IButton> = ({ onClick, children, color, variant, className }) => {
+  const rippleRef = useRef<any | null>()
 
-  const handleClick = (e:any) => {
-    rippleRef.current.addRipple(e)
+  const handleClick = (e:React.MouseEvent<HTMLButtonElement>) => {
+    if (rippleRef?.current) rippleRef.current.addRipple(e)
     if (typeof onClick === 'function') onClick(e)
   }
+  
   return (
     <button
       className={clsx(
