@@ -1,0 +1,29 @@
+@import '../../../utils/style/_variable.scss';
+
+.card {
+  position: relative;
+  border-radius: 20px;
+  border: solid 1px transparent;
+  box-shadow: 0 1px 6px 0 rgba($dark-grey, 0.12);
+  background-color: $white;
+
+  padding: 32px;
+
+  transition: border-color 300ms ease-in-out;
+
+  &.outline {
+    border: solid 1px $grey-2;
+    box-shadow: none;
+  }
+
+  &.active {
+    border: solid 1px $secondary !important;
+  }
+
+  &.selectable {
+    cursor: pointer;
+    &:hover {
+      border: solid 1px $primary;
+    }
+  }
+}
