@@ -3,15 +3,15 @@ import clsx from 'clsx';
 import styles from './styles/card.style.scss';
 import { Ripple } from '../Ripple';
 
-
 interface ICard {
-  className: string
-  variant: string,
-  active: boolean
-  children: any
-  onClick: any
-  value: string
+  className?: string,
+  variant?: string,
+  active?: string,
+  children?: any,
+  onClick?: any,
+  value?: string
 }
+
 const Card = ({
   className,
   variant,
