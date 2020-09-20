@@ -1,0 +1,166 @@
+@import '../../sass/variables';
+
+$icon-input-size: 20px;
+$icon-input-margin: 8px;
+$loading-input-size: 25px;
+$button-eye-size: 30px;
+$border: 1px;
+
+.formGroup {
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: $dark-indigo;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  .inputWrapper {
+    position: relative;
+
+    .formControl {
+      width: 100%;
+      display: block;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.29;
+      background-color: $white;
+      background-clip: padding-box;
+
+      border: $border solid $grey-2;
+      border-radius: 6px;
+
+      padding: 11px 16px;
+      box-shadow: none;
+      transition: border-color 200ms ease-in-out;
+
+      &:focus {
+        border: $border solid $primary;
+        outline: none;
+      }
+
+      &::placeholder {
+        color: $grey;
+      }
+    }
+
+    .loadingInput {
+      position: absolute;
+      width: $loading-input-size;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(#{$icon-input-margin} + #{$border});
+    }
+
+    .buttonEye {
+      position: absolute;
+      top: 50%;
+      right: $icon-input-margin;
+      transform: translateY(-50%);
+      border-radius: 100%;
+      height: $button-eye-size;
+      width: $button-eye-size;
+      padding: 0;
+    
+      .eyeIcon {
+        color: $soft-grey;
+        transition: color 400ms ease-in-out;
+    
+        &.show {
+          color: $dark-indigo;
+        }
+      }
+    }
+  }
+  
+  // helpertext
+  .helperText {
+    margin-top: 4px;
+    color: $grey;
+    font-size: 12px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  // error & valid base
+  &.formGroupError, &.formGroupValid {
+    .inputWrapper .formControl {
+      padding-right: calc(#{$icon-input-size} + 2*#{$icon-input-margin});
+      background: no-repeat;
+      background-position: right $icon-input-margin center;
+      background-size: $icon-input-size;
+    }
+  }
+  
+  // valid
+  &.formGroupValid .inputWrapper .formControl {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath fill='%231BC5BD' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+    border: $border solid $success;
+  }
+
+  // error
+  &.formGroupError {
+    .inputWrapper .formControl {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23F64E60'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23F64E60' stroke='none'/%3E%3C/svg%3E");
+      border: $border solid $danger;
+    }
+    .helperText {
+      color: $danger;
+    }
+  }
+
+  // loading
+  &.formGroupLoading .inputWrapper .formControl {
+    padding-right: calc(#{$loading-input-size} + 2*#{$icon-input-margin});
+  }
+
+  // when loading and (either error or valid) both appeared
+  &.formGroupLoading.formGroupValid .inputWrapper, &.formGroupLoading.formGroupError .inputWrapper {
+    .formControl {
+      padding-right: calc(#{$icon-input-size} + #{$loading-input-size} + 3*#{$icon-input-margin});
+    }
+    .loadingInput {
+      right: calc(#{$border} + #{$icon-input-size} + 2*#{$icon-input-margin});
+    }
+  }
+
+  // when type password and either error or valid appeared
+  &.formGroupPassword.formGroupValid .inputWrapper, &.formGroupPassword.formGroupError .inputWrapper {
+    .formControl {
+      padding-right: calc(#{$icon-input-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
+    }
+    .buttonEye {
+      right: calc(#{$border} + #{$icon-input-size} + 2*#{$icon-input-margin});
+    }
+  }
+
+  // when type password and loading appeared
+  &.formGroupPassword.formGroupLoading .inputWrapper {
+    .formControl {
+      padding-right: calc(#{$loading-input-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
+    }
+    .buttonEye {
+      right: calc(#{$border} + #{$loading-input-size} + 2*#{$icon-input-margin});
+    }
+  }
+
+  // when type password and (either error or valid) and loading appeared
+  &.formGroupPassword.formGroupValid.formGroupLoading .inputWrapper, &.formGroupPassword.formGroupError.formGroupLoading .inputWrapper {
+    .formControl {
+      padding-right: calc(#{$icon-input-size} + #{$loading-input-size} + 4*#{$icon-input-margin} + #{$button-eye-size});
+    }
+    .loadingInput {
+      right: calc(#{$border} + #{$icon-input-size} + 2*#{$icon-input-margin});
+    }
+    .buttonEye {
+      right: calc(#{$border} + #{$icon-input-size} + 3*#{$icon-input-margin} + #{$loading-input-size});
+    }
+  }
+
+
+}

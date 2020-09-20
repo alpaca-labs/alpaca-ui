@@ -1,6 +1,6 @@
 import React, { Children, cloneElement, useState } from 'react';
 import styles from "./styles/tabs.style.scss";
-import { Transition } from 'react-transition-group';
+import Transition from '../Transition/Transition';
 
 const duration = 100;
 
@@ -52,7 +52,7 @@ const Tabs = ({ onClick, children, activeKey }:any) => {
                             appear={true}
                             unmountOnExit
                         >
-                            {(state:any) =>
+                            {(state: any) =>
                                 <div
                                     style={{
                                         ...defaultStyle,
