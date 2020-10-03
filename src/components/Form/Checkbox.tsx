@@ -7,7 +7,7 @@ interface Props {
     name?: string
     label?: string
     disabled?: boolean
-    onChange?(): any
+    onChange?: (data:any) => void
     value?: string | number
     checked?: boolean
     color?: "primary" | "secondary"
