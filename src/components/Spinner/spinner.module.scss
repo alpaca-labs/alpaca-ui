@@ -1,0 +1,49 @@
+@import '../../utils/style/variable';
+
+$small: 15px;
+$medium: 25px;
+$large: 35px;
+
+.loader {
+  display: inline-block;
+  border: 4px solid $white;
+  border-radius: 100%;
+  border-right-color: transparent !important;
+  width: $medium;
+  height: $medium;
+  animation: spin 0.7s linear infinite;
+
+  &.small {
+    border-width: 3px;
+    width: $small;
+    height: $small;
+  }
+
+  &.large {
+    border-width: 5px;
+    width: $large;
+    height: $large;
+  }
+
+  &.dark {
+    border-color: $dark;
+  }
+
+  &.primary {
+    border-color: $primary;
+  }
+
+  &.secondary {
+    border-color: $secondary;
+  }
+
+  @keyframes spin {
+      0% {
+          transform: rotate(0deg);
+      }
+
+      100% {
+          transform: rotate(360deg);
+      }
+  }
+}
