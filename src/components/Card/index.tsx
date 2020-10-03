@@ -9,7 +9,7 @@ interface ICard {
   active?: string,
   children?: any,
   onClick?: any,
-  value?: string
+  value?: number | string | undefined
 }
 
 const Card = ({

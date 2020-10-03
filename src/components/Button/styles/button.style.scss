@@ -1,7 +1,7 @@
 @import '../../../utils/style/_variable.scss';
 
 .buttonRoot {
-  //base
+  // base
   border: 0;
   cursor: pointer;
   outline: 0;
@@ -11,29 +11,39 @@
   font-family: inherit;
   font-size: inherit;
   padding: 10px 16px;
+
   &:focus {
     outline: none;
   }
+
   &:hover {
     background-color: rgba($dark, 0.05);
   }
 
-  //primary
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // primary
   &.buttonPrimary {
     color: $primary;
+
     &:hover {
       background-color: rgba($primary, 0.05);
     }
   }
-  //secondary
+
+  // secondary
   &.buttonSecondary {
     color: $secondary;
+
     &:hover {
       background-color: rgba($secondary, 0.05);
     }
   }
 
-  //filled
+  // filled
   &.buttonFilled {
     background-color: rgba($dark, 0.05);
 
@@ -41,9 +51,21 @@
       background-color: $primary;
       color: $white;
     }
+
     &.buttonSecondary {
       background-color: $secondary;
       color: $white;
     }
   }
+
+  .buttonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .spinner {
+      margin-right: 5px;
+    }
+  }
+
 }

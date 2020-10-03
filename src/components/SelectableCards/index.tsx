@@ -2,12 +2,12 @@ import clsx from 'clsx';
 import React, { Children, cloneElement } from 'react';
 import styles from './styles/selectableCards.style.scss';
 
-interface ISelectableCard{
+interface ISelectableCard {
   className: string
   children: any
   selectedValue: any
-  onClick: any
-  variant:string
+  onClick: (event?:any) => void
+  variant: string
 }
 
 const SelectableCards = ({
