@@ -1,6 +1,6 @@
-import React, { Children, cloneElement, useState } from 'react';
+import React, { Children, cloneElement, useState, useRef } from 'react';
 import styles from "./styles/tabs.style.scss";
-import Transition from '../Transition/Transition';
+import { Transition } from 'react-transition-group';
 
 const duration = 100;
 
@@ -16,9 +16,10 @@ const transitionStyles = {
 }
 
 
-const Tabs = ({ onClick, children, activeKey }:any) => {
+const Tabs = ({ onClick, children, activeKey }: any) => {
     const [indicatorWidth, setIndicatorWidth] = useState(0)
     const [indicatorPosition, setIndicatorPosition] = useState(0)
+    const nodeRef: any = useRef();
 
     return (
         <div className={styles.tabsRoot}>
@@ -47,6 +48,7 @@ const Tabs = ({ onClick, children, activeKey }:any) => {
                 {Children.map(children, (child, i) =>
                     child ?
                         <Transition
+                            nodeRef={nodeRef}
                             in={child.props?.active ?? activeKey === i}
                             timeout={duration}
                             appear={true}
@@ -57,7 +59,9 @@ const Tabs = ({ onClick, children, activeKey }:any) => {
                                     style={{
                                         ...defaultStyle,
                                         ...transitionStyles[state],
-                                    }}>
+                                    }}
+                                    ref={nodeRef}
+                                >
                                     {child.props.children}
                                 </div>
                             }
