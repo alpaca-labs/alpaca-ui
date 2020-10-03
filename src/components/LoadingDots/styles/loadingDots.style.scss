@@ -1,19 +1,21 @@
 @import '../../../utils/style/variable';
 
+$small: 6px;
+$medium: 10px;
+$large: 16px;
+
 .loadingDotsRoot {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 2rem 0;
-  margin: 0 -5%;
   overflow: hidden;
 
   .loadingDots {
     position: relative;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    width: $medium;
+    height: $medium;
+    border-radius: 100%;
     background-color: $primary;
     color: $primary;
     animation: dotFlashing 1s infinite linear alternate;
@@ -27,10 +29,10 @@
     }
 
     &::before {
-      left: -15px;
-      width: 10px;
-      height: 10px;
-      border-radius: 5px;
+      left: calc(-3/2*#{$medium});
+      width: $medium;
+      height: $medium;
+      border-radius: 100%;
       background-color: $primary;
       color: $primary;
       animation: dotFlashing 1s infinite alternate;
@@ -38,14 +40,50 @@
     }
 
     &::after {
-      left: 15px;
-      width: 10px;
-      height: 10px;
-      border-radius: 5px;
+      left: calc(3/2*#{$medium});
+      width: $medium;
+      height: $medium;
+      border-radius: 100%;
       background-color: $primary;
       color: $primary;
       animation: dotFlashing 1s infinite alternate;
       animation-delay: 1s;
+    }
+  }
+
+  &.small .loadingDots {
+    width: $small;
+    height: $small;
+
+    &::before, &::after {
+      width: $small;
+      height: $small;
+    }
+
+    &::before {
+      left: calc(-3/2*#{$small});
+    }
+
+    &::after {
+      left: calc(3/2*#{$small});
+    }
+  }
+
+  &.large .loadingDots {
+    width: $large;
+    height: $large;
+
+    &::before, &::after {
+      width: $large;
+      height: $large;
+    }
+
+    &::before {
+      left: calc(-3/2*#{$large});
+    }
+
+    &::after {
+      left: calc(3/2*#{$large});
     }
   }
 

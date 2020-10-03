@@ -79,6 +79,9 @@ $border: 1px;
         height: $button-eye-size;
         width: $button-eye-size;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       
         .eyeIcon {
           color: $soft-grey;

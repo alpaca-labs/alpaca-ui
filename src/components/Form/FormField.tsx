@@ -8,12 +8,13 @@ interface IFormField{
   label?: string
   children?: any
   error?: string
-  valid?: any
-  loading?: boolean,
+  valid?: boolean
+  loading?: boolean
   helperText?: string
-  row?: any
+  row?: boolean
   isPassword?: boolean
 }
+
 const FormField = memo(({
   id,
   className,
