@@ -1,8 +1,8 @@
-@import '../../sass/variables';
+@import '../../utils/style/variable';
 
-$icon-input-size: 20px;
 $icon-input-margin: 8px;
-$loading-input-size: 25px;
+$validation-icon-size: 20px;
+$loading-icon-size: 25px;
 $button-eye-size: 30px;
 $border: 1px;
 
@@ -17,60 +17,153 @@ $border: 1px;
   }
 
   .inputWrapper {
-    position: relative;
 
     .formControl {
-      width: 100%;
-      display: block;
+      position: relative;
 
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.29;
-      background-color: $white;
-      background-clip: padding-box;
+      textarea {
+        resize: none;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
 
-      border: $border solid $grey-2;
-      border-radius: 6px;
-
-      padding: 11px 16px;
-      box-shadow: none;
-      transition: border-color 200ms ease-in-out;
-
-      &:focus {
-        border: $border solid $primary;
-        outline: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
 
-      &::placeholder {
-        color: $grey;
+      input, textarea {
+        width: 100%;
+        display: block;
+
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        background-color: $white;
+        background-clip: padding-box;
+
+        border: $border solid $grey-2;
+        border-radius: 6px;
+
+        padding: 11px 16px;
+        box-shadow: none;
+        transition: border-color 200ms ease-in-out;
+
+        &:disabled {
+          background-color: $grey-3;
+        }
+
+        &:focus {
+          border: $border solid $primary;
+          outline: none;
+        }
+
+        &::placeholder {
+          color: $grey;
+        }
+      }
+
+      .loadingInput {
+        position: absolute;
+        width: $loading-icon-size;
+        top: 50%;
+        transform: translateY(-50%);
+        right: calc(#{$icon-input-margin} + #{$border});
+      }
+
+      .buttonEye {
+        position: absolute;
+        top: 50%;
+        right: $icon-input-margin;
+        transform: translateY(-50%);
+        border-radius: 100%;
+        height: $button-eye-size;
+        width: $button-eye-size;
+        padding: 0;
+      
+        .eyeIcon {
+          color: $soft-grey;
+          transition: color 400ms ease-in-out;
+      
+          &.show {
+            color: $dark-indigo;
+          }
+        }
+      }
+
+      .validIcon {
+        width: $validation-icon-size;
+        height: $validation-icon-size;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: $icon-input-margin;
+        fill: none;
+        stroke: $success;
+        stroke-width: 3px;
+        stroke-dashoffset: 86.12;
+        stroke-dasharray: 86.12;
+        pointer-events: none;
+        animation: validDash 400ms ease-in-out forwards;
+        
+        @keyframes validDash {
+          to {
+            stroke-dashoffset: 68.12;
+          }
+        }
       }
     }
 
-    .loadingInput {
-      position: absolute;
-      width: $loading-input-size;
-      top: 50%;
-      transform: translateY(-50%);
-      right: calc(#{$icon-input-margin} + #{$border});
-    }
+    // if append or prepend exists
+    &.inputGroup {
+      display: flex;
 
-    .buttonEye {
-      position: absolute;
-      top: 50%;
-      right: $icon-input-margin;
-      transform: translateY(-50%);
-      border-radius: 100%;
-      height: $button-eye-size;
-      width: $button-eye-size;
-      padding: 0;
-    
-      .eyeIcon {
-        color: $soft-grey;
-        transition: color 400ms ease-in-out;
-    
-        &.show {
-          color: $dark-indigo;
+      .formControl {
+        flex: 1 1 auto;
+      }
+
+      .formControl:not(:last-child) {
+        input, textarea {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      .formControl:not(:first-child) {
+        input, textarea {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      .inputGroupAppend span, .inputGroupPrepend span {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        color: rgba($dark-indigo, .6);
+        
+        background-color: $grey-3;
+        padding: 11px 16px;
+        border: $border solid $grey-2;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .inputGroupAppend {
+        margin-left: -$border;
+
+        span {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      .inputGroupPrepend {
+        margin-right: -$border;
+
+        span {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
         }
       }
     }
@@ -81,33 +174,34 @@ $border: 1px;
     margin-top: 4px;
     color: $grey;
     font-size: 12px;
-
-    &::first-letter {
-      text-transform: capitalize;
-    }
   }
 
   // error & valid base
   &.formGroupError, &.formGroupValid {
     .inputWrapper .formControl {
-      padding-right: calc(#{$icon-input-size} + 2*#{$icon-input-margin});
-      background: no-repeat;
-      background-position: right $icon-input-margin center;
-      background-size: $icon-input-size;
+      input, textarea {
+        padding-right: calc(#{$validation-icon-size} + 2*#{$icon-input-margin});
+        background: no-repeat;
+        background-position: right $icon-input-margin center;
+        background-size: $validation-icon-size;
+      }
     }
   }
   
   // valid
   &.formGroupValid .inputWrapper .formControl {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath fill='%231BC5BD' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
-    border: $border solid $success;
+    input, textarea {
+      border: $border solid $success;
+    }
   }
 
   // error
   &.formGroupError {
     .inputWrapper .formControl {
-      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23F64E60'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23F64E60' stroke='none'/%3E%3C/svg%3E");
-      border: $border solid $danger;
+      input, textarea {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23F64E60'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23F64E60' stroke='none'/%3E%3C/svg%3E");
+        border: $border solid $danger;
+      }
     }
     .helperText {
       color: $danger;
@@ -116,51 +210,224 @@ $border: 1px;
 
   // loading
   &.formGroupLoading .inputWrapper .formControl {
-    padding-right: calc(#{$loading-input-size} + 2*#{$icon-input-margin});
+    input, textarea {
+      padding-right: calc(#{$loading-icon-size} + 2*#{$icon-input-margin});
+    }
+  }
+
+  // password
+  &.formGroupPassword .inputWrapper .formControl {
+    input {
+      padding-right: calc(#{$button-eye-size} + 2*#{$icon-input-margin});
+    }
   }
 
   // when loading and (either error or valid) both appeared
-  &.formGroupLoading.formGroupValid .inputWrapper, &.formGroupLoading.formGroupError .inputWrapper {
-    .formControl {
-      padding-right: calc(#{$icon-input-size} + #{$loading-input-size} + 3*#{$icon-input-margin});
+  &.formGroupLoading.formGroupValid .inputWrapper .formControl, &.formGroupLoading.formGroupError .inputWrapper .formControl {
+    input, textarea {
+      padding-right: calc(#{$validation-icon-size} + #{$loading-icon-size} + 3*#{$icon-input-margin});
     }
     .loadingInput {
-      right: calc(#{$border} + #{$icon-input-size} + 2*#{$icon-input-margin});
+      right: calc(#{$border} + #{$validation-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when type password and either error or valid appeared
-  &.formGroupPassword.formGroupValid .inputWrapper, &.formGroupPassword.formGroupError .inputWrapper {
-    .formControl {
-      padding-right: calc(#{$icon-input-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
+  &.formGroupPassword.formGroupValid .inputWrapper .formControl, &.formGroupPassword.formGroupError .inputWrapper .formControl {
+    input {
+      padding-right: calc(#{$validation-icon-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
     }
     .buttonEye {
-      right: calc(#{$border} + #{$icon-input-size} + 2*#{$icon-input-margin});
+      right: calc(#{$border} + #{$validation-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when type password and loading appeared
-  &.formGroupPassword.formGroupLoading .inputWrapper {
-    .formControl {
-      padding-right: calc(#{$loading-input-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
+  &.formGroupPassword.formGroupLoading .inputWrapper .formControl {
+    input {
+      padding-right: calc(#{$loading-icon-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
     }
     .buttonEye {
-      right: calc(#{$border} + #{$loading-input-size} + 2*#{$icon-input-margin});
+      right: calc(#{$border} + #{$loading-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when type password and (either error or valid) and loading appeared
-  &.formGroupPassword.formGroupValid.formGroupLoading .inputWrapper, &.formGroupPassword.formGroupError.formGroupLoading .inputWrapper {
-    .formControl {
-      padding-right: calc(#{$icon-input-size} + #{$loading-input-size} + 4*#{$icon-input-margin} + #{$button-eye-size});
+  &.formGroupPassword.formGroupValid.formGroupLoading .inputWrapper .formControl, &.formGroupPassword.formGroupError.formGroupLoading .inputWrapper .formControl {
+    input {
+      padding-right: calc(#{$validation-icon-size} + #{$loading-icon-size} + 4*#{$icon-input-margin} + #{$button-eye-size});
     }
     .loadingInput {
-      right: calc(#{$border} + #{$icon-input-size} + 2*#{$icon-input-margin});
+      right: calc(#{$border} + #{$validation-icon-size} + 2*#{$icon-input-margin});
     }
     .buttonEye {
-      right: calc(#{$border} + #{$icon-input-size} + 3*#{$icon-input-margin} + #{$loading-input-size});
+      right: calc(#{$border} + #{$validation-icon-size} + 3*#{$icon-input-margin} + #{$loading-icon-size});
+    }
+  }
+}
+
+.checkboxRoot, .radioRoot {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+
+  &:hover {
+    .checkboxWrapper .checkbox, .radioWrapper .radio {
+      border: solid 2px $dark-indigo;
     }
   }
 
+  .checkboxWrapper, .radioWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 8px;
 
+    input {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+      position: absolute;
+      opacity: 0;
+      cursor: inherit;
+
+      &:checked {
+        // for checkbox
+        + .checkbox {
+          background-color: $white;
+          svg {
+            stroke-dashoffset: 70.12;
+          }
+        }
+
+      // for radio
+        + .radio {
+          border: solid 2px transparent;
+          background-color: $dark-indigo;
+          &::after {
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      }
+    }
+
+    // checkbox and radio base
+    .checkbox, .radio {
+      height: 24px;
+      width: 24px;
+      border: solid 2px $grey-2;
+      transition: border-color 300ms ease-in-out, background-color 300ms ease-in-out;
+    }
+
+    // for checkbox
+    .checkbox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      svg {
+        height: 100%;
+        width: 100%;
+        transition: stroke-dashoffset 300ms ease-in-out;
+        fill: none;
+        color: $dark-indigo;
+        stroke: currentColor;
+        stroke-width: 2px;
+        stroke-dashoffset: 86.12;
+        stroke-dasharray: 86.12;
+        pointer-events: none;
+      }
+    }
+
+    // for radio
+    .radio {
+      border-radius: 100%;
+      background-color: $white;
+      position: relative;
+      &::after {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: inherit;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transform-origin: center center;
+        background-color: $white;
+        transition: transform 300ms ease-in-out;
+      }
+    }
+  }
+  
+  .checkboxLabel, .radioLabel {
+    font-size: 14px;
+    color: $dark-indigo;
+  }
+
+  // Primary & Secondary base
+  &.primary, &.secondary {
+    .checkboxWrapper {
+      input:checked + .checkbox {
+        border: solid 2px transparent;
+      }
+    }
+    .checkbox svg {
+      color: $white;
+    }
+  }
+
+  //Primary
+  &.primary {
+    &:hover .checkboxWrapper .checkbox, &:hover .radioWrapper .radio {
+      border: solid 2px $primary;
+    }
+    .checkboxWrapper, .radioWrapper {
+      input:checked {
+        + .checkbox, + .radio {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+
+  //Secondary
+  &.secondary {
+    &:hover .checkboxWrapper .checkbox, &:hover .radioWrapper .radio {
+      border: solid 2px $secondary;
+    }
+    .checkboxWrapper, .radioWrapper {
+      input:checked {
+        + .checkbox, + .radio {
+          background-color: $secondary;
+        }
+      }
+    }
+  }
+
+  // Disabled
+  &.disabled {
+    cursor: auto;
+    
+    .checkboxLabel, .radioLabel {
+      color: $soft-grey;
+    }
+
+    .checkboxWrapper, .radioWrapper {
+      .checkbox, .radio {
+        border: solid 2px $grey-2 !important;
+        background-color: $grey-3 !important;
+
+        svg {
+          color: $soft-grey !important;
+        }
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button, LoadingDots, Tab, Tabs, Icon } from 'alpaca-ui'
+import { Button, LoadingDots, Tab, Tabs, Icon, Checkbox } from 'alpaca-ui'
 import 'alpaca-ui/dist/index.css'
 const { Activity, Archive } = Icon
 
@@ -42,6 +42,9 @@ const App = () => {
                 <Tab title='Loading'>
                     <h3>Loading</h3>
                     <LoadingDots />
+                    <Checkbox />
+                    <Checkbox color="primary" />
+                    <Checkbox color="secondary" />
                 </Tab>
 
             </Tabs>
