@@ -1,17 +1,15 @@
-@import '../../../utils/style/variable';
-
 $small: 6px;
 $medium: 10px;
 $large: 16px;
 
-.loadingDotsRoot {
+.AuiLoadingDots-root {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
 
-  .loadingDots {
+  .AuiLoadingDots {
     position: relative;
     width: $medium;
     height: $medium;
@@ -51,7 +49,7 @@ $large: 16px;
     }
   }
 
-  &.small .loadingDots {
+  &.AuiLoadingDots-small .AuiLoadingDots {
     width: $small;
     height: $small;
 
@@ -69,7 +67,7 @@ $large: 16px;
     }
   }
 
-  &.large .loadingDots {
+  &.AuiLoadingDots-large .AuiLoadingDots {
     width: $large;
     height: $large;
 
@@ -84,16 +82,6 @@ $large: 16px;
 
     &::after {
       left: calc(3/2*#{$large});
-    }
-  }
-
-  @keyframes dotFlashing {
-    0% {
-      background-color: $primary;
-    }
-    50%,
-    100% {
-      background-color: lighten($primary, 30%);
     }
   }
 }

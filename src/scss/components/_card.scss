@@ -1,6 +1,4 @@
-@import '../../../utils/style/_variable.scss';
-
-.card {
+.AuiCard-root {
   position: relative;
   border-radius: 20px;
   border: solid 1px transparent;
@@ -11,19 +9,26 @@
 
   transition: border-color 300ms ease-in-out;
 
-  &.outline {
+  &.AuiCard-outlined {
     border: solid 1px $grey-2;
     box-shadow: none;
   }
 
-  &.active {
+  &.AuiCard-active {
     border: solid 1px $secondary !important;
   }
 
-  &.selectable {
+  &.AuiCard-selectable {
     cursor: pointer;
     &:hover {
       border: solid 1px $primary;
     }
+  }
+}
+
+.AuiSelectableCards-root {
+  display: flex;
+  div:not(:last-child) {
+    margin-right: 20px;
   }
 }

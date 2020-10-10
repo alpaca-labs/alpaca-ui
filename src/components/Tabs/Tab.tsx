@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import styles from "./styles/tabs.style.scss";
 import clsx from 'clsx';
 
 const Tab = ({
@@ -9,8 +8,8 @@ const Tab = ({
   active,
   setIndicatorPosition,
   setIndicatorWidth
-}:any) => {
-    const tabRef:any = useRef<any | null>();
+}: any) => {
+  const tabRef: any = useRef<any | null>();
 
   useEffect(() => {
     if (active) {
@@ -23,13 +22,13 @@ const Tab = ({
     <div
       ref={tabRef}
       className={clsx(
-        styles.tabWrapper,
-        active && styles.active
+        "AuiTabWrapper",
+        active && "active"
       )}
     >
       <button
         onClick={() => onClick(index)}
-        className={styles.tabTitle}
+        className="AuiTabTitle"
         title={title}
       >
         {title}

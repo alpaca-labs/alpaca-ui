@@ -1,13 +1,12 @@
 import clsx from 'clsx'
 import React, { useRef } from 'react'
-import {Ripple} from '../Ripple/index'
+import { Ripple } from '../Ripple/index'
 import Spinner from '../Spinner'
-import styles from './styles/button.style.scss'
 
 interface IButton {
-  onClick?: any,
-  children?: any,
-  color?: 'primary' | 'secondary',
+  onClick?: any
+  children?: any
+  color?: 'primary' | 'secondary'
   variant?: string
   className?: string
   type?: "button" | "submit" | "reset" | undefined
@@ -15,7 +14,7 @@ interface IButton {
   disabled?: boolean
 }
 
-const Button:React.FC<IButton> = ({
+const Button: React.FC<IButton> = ({
   onClick,
   children,
   color,
@@ -27,28 +26,27 @@ const Button:React.FC<IButton> = ({
 }) => {
   const rippleRef = useRef<any | null>()
 
-  const handleClick = (e:React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (rippleRef?.current) rippleRef.current.addRipple(e)
     if (typeof onClick === 'function') onClick(e)
   }
-  
+
   return (
     <button
       className={clsx(
         className,
-        styles.buttonRoot,
-        color === 'primary' && styles.buttonPrimary,
-        color === 'secondary' && styles.buttonSecondary,
-        variant === 'filled' && styles.buttonFilled
+        "AuiButtonRoot",
+        color && `AuiButton-${color}`,
+        variant === 'filled' && "AuiButton-filled"
       )}
       onClick={handleClick}
       type={type}
       disabled={loading ? true : disabled}
     >
-      <div className={styles.buttonWrapper}>
+      <div className="AuiButton-wrapper">
         {
           loading &&
-          <Spinner className={styles.spinner} size="small" color={variant === 'filled' ? undefined : color ? color : 'dark'} />
+          <Spinner className="AuiButton-spinner" size="small" color={variant === 'filled' ? undefined : color ? color : 'dark'} />
         }
         {children}
       </div>

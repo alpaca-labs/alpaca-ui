@@ -2,17 +2,16 @@ import clsx from 'clsx';
 import React, { forwardRef, memo, useMemo, useState } from 'react';
 import { LoadingDots } from '../LoadingDots';
 import { FormField } from './FormField';
-import styles from './form.module.scss';
 import { Eye } from '../Icon';
 import { Button } from '../Button';
 
-interface ITextInput{
+interface ITextInput {
   id?: any
   name?: string
   value?: any
   label?: string
-  onChange?: (data:any) => void
-  onBlur?: (data:any) => void
+  onChange?: (data: any) => void
+  onBlur?: (data: any) => void
   error?: any
   valid?: boolean
   loading?: boolean
@@ -107,37 +106,37 @@ const TextInput = memo(forwardRef((
       isPassword={password}
     >
       <div className={clsx(
-        styles.inputWrapper,
-        (append || prepend) && styles.inputGroup
+        "AuiInputWrapper",
+        (append || prepend) && "AuiInputGroup"
       )}>
         {
           prepend &&
-          <div className={styles.inputGroupPrepend}>
+          <div className="AuiInputGroupPrepend">
             <span>
               {prepend}
             </span>
           </div>
         }
-        <div className={styles.formControl}>
+        <div className="AuiFormControl">
           {componentInput}
           {
             loading &&
-            <LoadingDots className={styles.loadingInput} size="small" />
+            <LoadingDots className="AuiLoadingInput" size="small" />
           }
           {
             password &&
-            <Button className={styles.buttonEye} onClick={() => setShowPassword(!showPassword)}><Eye className={clsx(styles.eyeIcon, showPassword && styles.show)} /></Button>
+            <Button className="AuiButtonEye" onClick={() => setShowPassword(!showPassword)}><Eye className={clsx("eyeIcon", showPassword && "show")} /></Button>
           }
           {
             valid &&
-            <svg className={styles.validIcon} viewBox="0 0 21 21">
+            <svg className="AuiValidIcon" viewBox="0 0 21 21">
               <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
             </svg>
           }
         </div>
         {
           append &&
-          <div className={styles.inputGroupAppend}>
+          <div className="AuiInputGroupAppend">
             <span>
               {append}
             </span>

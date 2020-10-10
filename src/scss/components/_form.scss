@@ -1,12 +1,10 @@
-@import '../../utils/style/variable';
-
 $icon-input-margin: 8px;
 $validation-icon-size: 20px;
 $loading-icon-size: 25px;
 $button-eye-size: 30px;
 $border: 1px;
 
-.formGroup {
+.AuiFormGroup {
 
   label {
     font-size: 14px;
@@ -16,9 +14,9 @@ $border: 1px;
     display: inline-block;
   }
 
-  .inputWrapper {
+  .AuiInputWrapper {
 
-    .formControl {
+    .AuiFormControl {
       position: relative;
 
       textarea {
@@ -62,7 +60,7 @@ $border: 1px;
         }
       }
 
-      .loadingInput {
+      .AuiLoadingInput {
         position: absolute;
         width: $loading-icon-size;
         top: 50%;
@@ -70,7 +68,7 @@ $border: 1px;
         right: calc(#{$icon-input-margin} + #{$border});
       }
 
-      .buttonEye {
+      .AuiButtonEye {
         position: absolute;
         top: 50%;
         right: $icon-input-margin;
@@ -93,7 +91,7 @@ $border: 1px;
         }
       }
 
-      .validIcon {
+      .AuiValidIcon {
         width: $validation-icon-size;
         height: $validation-icon-size;
         position: absolute;
@@ -107,38 +105,32 @@ $border: 1px;
         stroke-dasharray: 86.12;
         pointer-events: none;
         animation: validDash 400ms ease-in-out forwards;
-        
-        @keyframes validDash {
-          to {
-            stroke-dashoffset: 68.12;
-          }
-        }
       }
     }
 
     // if append or prepend exists
-    &.inputGroup {
+    &.AuiInputGroup {
       display: flex;
 
-      .formControl {
+      .AuiFormControl {
         flex: 1 1 auto;
       }
 
-      .formControl:not(:last-child) {
+      .AuiFormControl:not(:last-child) {
         input, textarea {
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
         }
       }
 
-      .formControl:not(:first-child) {
+      .AuiFormControl:not(:first-child) {
         input, textarea {
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
         }
       }
 
-      .inputGroupAppend span, .inputGroupPrepend span {
+      .AuiInputGroupAppend span, .AuiInputGroupPrepend span {
         height: 100%;
         display: flex;
         align-items: center;
@@ -152,7 +144,7 @@ $border: 1px;
         font-size: 14px;
       }
 
-      .inputGroupAppend {
+      .AuiInputGroupAppend {
         margin-left: -$border;
 
         span {
@@ -161,7 +153,7 @@ $border: 1px;
         }
       }
 
-      .inputGroupPrepend {
+      .AuiInputGroupPrepend {
         margin-right: -$border;
 
         span {
@@ -173,15 +165,15 @@ $border: 1px;
   }
   
   // helpertext
-  .helperText {
+  .AuiHelperText {
     margin-top: 4px;
     color: $grey;
     font-size: 12px;
   }
 
   // error & valid base
-  &.formGroupError, &.formGroupValid {
-    .inputWrapper .formControl {
+  &.AuiFormGroup-error, &.AuiFormGroup-valid {
+    .AuiInputWrapper .AuiFormControl {
       input, textarea {
         padding-right: calc(#{$validation-icon-size} + 2*#{$icon-input-margin});
         background: no-repeat;
@@ -192,15 +184,15 @@ $border: 1px;
   }
   
   // valid
-  &.formGroupValid .inputWrapper .formControl {
+  &.AuiFormGroup-valid .AuiInputWrapper .AuiFormControl {
     input, textarea {
       border: $border solid $success;
     }
   }
 
   // error
-  &.formGroupError {
-    .inputWrapper .formControl {
+  &.AuiFormGroup-error {
+    .AuiInputWrapper .AuiFormControl {
       input, textarea {
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23F64E60'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23F64E60' stroke='none'/%3E%3C/svg%3E");
         border: $border solid $danger;
@@ -212,75 +204,75 @@ $border: 1px;
   }
 
   // loading
-  &.formGroupLoading .inputWrapper .formControl {
+  &.AuiFormGroup-loading .AuiInputWrapper .AuiFormControl {
     input, textarea {
       padding-right: calc(#{$loading-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // password
-  &.formGroupPassword .inputWrapper .formControl {
+  &.AuiFormGroup-password .AuiInputWrapper .AuiFormControl {
     input {
       padding-right: calc(#{$button-eye-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when loading and (either error or valid) both appeared
-  &.formGroupLoading.formGroupValid .inputWrapper .formControl, &.formGroupLoading.formGroupError .inputWrapper .formControl {
+  &.AuiFormGroup-loading.AuiFormGroup-valid .AuiInputWrapper .AuiFormControl, &.AuiFormGroup-loading.AuiFormGroup-error .AuiInputWrapper .AuiFormControl {
     input, textarea {
       padding-right: calc(#{$validation-icon-size} + #{$loading-icon-size} + 3*#{$icon-input-margin});
     }
-    .loadingInput {
+    .AuiLoadingInput {
       right: calc(#{$border} + #{$validation-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when type password and either error or valid appeared
-  &.formGroupPassword.formGroupValid .inputWrapper .formControl, &.formGroupPassword.formGroupError .inputWrapper .formControl {
+  &.AuiFormGroup-password.AuiFormGroup-valid .AuiInputWrapper .AuiFormControl, &.AuiFormGroup-password.AuiFormGroup-error .AuiInputWrapper .AuiFormControl {
     input {
       padding-right: calc(#{$validation-icon-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
     }
-    .buttonEye {
+    .AuiButtonEye {
       right: calc(#{$border} + #{$validation-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when type password and loading appeared
-  &.formGroupPassword.formGroupLoading .inputWrapper .formControl {
+  &.AuiFormGroup-password.AuiFormGroup-loading .AuiInputWrapper .AuiFormControl {
     input {
       padding-right: calc(#{$loading-icon-size} + #{$button-eye-size} + 3*#{$icon-input-margin});
     }
-    .buttonEye {
+    .AuiButtonEye {
       right: calc(#{$border} + #{$loading-icon-size} + 2*#{$icon-input-margin});
     }
   }
 
   // when type password and (either error or valid) and loading appeared
-  &.formGroupPassword.formGroupValid.formGroupLoading .inputWrapper .formControl, &.formGroupPassword.formGroupError.formGroupLoading .inputWrapper .formControl {
+  &.AuiFormGroup-password.AuiFormGroup-valid.AuiFormGroup-loading .AuiInputWrapper .AuiFormControl, &.AuiFormGroup-password.AuiFormGroup-error.AuiFormGroup-loading .AuiInputWrapper .AuiFormControl {
     input {
       padding-right: calc(#{$validation-icon-size} + #{$loading-icon-size} + 4*#{$icon-input-margin} + #{$button-eye-size});
     }
-    .loadingInput {
+    .AuiLoadingInput {
       right: calc(#{$border} + #{$validation-icon-size} + 2*#{$icon-input-margin});
     }
-    .buttonEye {
+    .AuiButtonEye {
       right: calc(#{$border} + #{$validation-icon-size} + 3*#{$icon-input-margin} + #{$loading-icon-size});
     }
   }
 }
 
-.checkboxRoot, .radioRoot {
+.AuiCheckbox-root, .AuiRadio-root {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
 
   &:hover {
-    .checkboxWrapper .checkbox, .radioWrapper .radio {
+    .AuiCheckboxWrapper .AuiCheckbox, .AuiRadioWrapper .AuiRadio {
       border: solid 2px $dark-indigo;
     }
   }
 
-  .checkboxWrapper, .radioWrapper {
+  .AuiCheckboxWrapper, .AuiRadioWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -301,7 +293,7 @@ $border: 1px;
 
       &:checked {
         // for checkbox
-        + .checkbox {
+        + .AuiCheckbox {
           background-color: $white;
           svg {
             stroke-dashoffset: 70.12;
@@ -309,7 +301,7 @@ $border: 1px;
         }
 
       // for radio
-        + .radio {
+        + .AuiRadio {
           border: solid 2px transparent;
           background-color: $dark-indigo;
           &::after {
@@ -320,7 +312,7 @@ $border: 1px;
     }
 
     // checkbox and radio base
-    .checkbox, .radio {
+    .AuiCheckbox, .AuiRadio {
       height: 24px;
       width: 24px;
       border: solid 2px $grey-2;
@@ -328,7 +320,7 @@ $border: 1px;
     }
 
     // for checkbox
-    .checkbox {
+    .AuiCheckbox {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -348,7 +340,7 @@ $border: 1px;
     }
 
     // for radio
-    .radio {
+    .AuiRadio {
       border-radius: 100%;
       background-color: $white;
       position: relative;
@@ -369,31 +361,31 @@ $border: 1px;
     }
   }
   
-  .checkboxLabel, .radioLabel {
+  .AuiCheckboxLabel, .AuiRadioLabel {
     font-size: 14px;
     color: $dark-indigo;
   }
 
   // Primary & Secondary base
-  &.primary, &.secondary {
-    .checkboxWrapper {
-      input:checked + .checkbox {
+  &.Aui-primary, &.Aui-secondary {
+    .AuiCheckboxWrapper {
+      input:checked + .AuiCheckbox {
         border: solid 2px transparent;
       }
     }
-    .checkbox svg {
+    .AuiCheckbox svg {
       color: $white;
     }
   }
 
   //Primary
-  &.primary {
-    &:hover .checkboxWrapper .checkbox, &:hover .radioWrapper .radio {
+  &.Aui-primary {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
       border: solid 2px $primary;
     }
-    .checkboxWrapper, .radioWrapper {
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
       input:checked {
-        + .checkbox, + .radio {
+        + .AuiCheckbox, + .AuiRadio {
           background-color: $primary;
         }
       }
@@ -401,13 +393,13 @@ $border: 1px;
   }
 
   //Secondary
-  &.secondary {
-    &:hover .checkboxWrapper .checkbox, &:hover .radioWrapper .radio {
+  &.Aui-secondary {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
       border: solid 2px $secondary;
     }
-    .checkboxWrapper, .radioWrapper {
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
       input:checked {
-        + .checkbox, + .radio {
+        + .AuiCheckbox, + .AuiRadio {
           background-color: $secondary;
         }
       }
@@ -418,12 +410,12 @@ $border: 1px;
   &.disabled {
     cursor: auto;
     
-    .checkboxLabel, .radioLabel {
+    .AuiCheckboxLabel, .AuiRadioLabel {
       color: $soft-grey;
     }
 
-    .checkboxWrapper, .radioWrapper {
-      .checkbox, .radio {
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      .AuiCheckbox, .AuiRadio {
         border: solid 2px $grey-2 !important;
         background-color: $grey-3 !important;
 

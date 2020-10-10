@@ -1,20 +1,18 @@
-@import '../../../utils/style/global.style.scss';
-
-.tabsRoot {
-  .tabContent {
+.AuiTabs-root {
+  .AuiTabContent {
     position: relative;
   }
   
-  .tabWrapper {
+  .AuiTabWrapper {
     position: relative;
     display: flex;
     align-items: center;
   
-    &:not(:last-child) {
-      margin-right: .75rem;
+    &:not(:first-child) {
+      margin-left: .75rem;
     }
   
-    .tabTitle {
+    .AuiTabTitle {
       background-color: unset;
       border: unset;
       color: $grey;
@@ -42,14 +40,14 @@
     }
   }
   
-  .tabNav {
+  .AuiTabNav {
     display: flex;
     padding: .75rem 0;
     position: relative;
 
     border-bottom: 1px solid $grey-2;
 
-    .tabIndicator {
+    .AuiTabIndicator {
       position: absolute;
       bottom: 0;
       height: 4px;
