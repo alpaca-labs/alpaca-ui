@@ -1,21 +1,19 @@
 import React from 'react';
-import styles from './styles/loadingDots.style.scss';
 import clsx from 'clsx';
 
-interface ILoadingDots{
-  size?: string,
+interface ILoadingDots {
+  size?: 'small' | 'large',
   className?: string
 }
 
-const LoadingDots:React.FC<ILoadingDots> = ({size, className}: ILoadingDots) => {
+const LoadingDots: React.FC<ILoadingDots> = ({ size, className }: ILoadingDots) => {
   return (
     <div className={clsx(
-      styles.loadingDotsRoot,
+      "AuiLoadingDots-root",
       className,
-      size === 'small' && styles.small,
-      size === 'large' && styles.large
+      size && `AuiLoadingDots-${size}`
     )}>
-      <div className={styles.loadingDots} />
+      <div className="AuiLoadingDots" />
     </div>
   )
 }

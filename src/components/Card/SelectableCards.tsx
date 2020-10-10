@@ -1,12 +1,11 @@
 import clsx from 'clsx';
 import React, { Children, cloneElement } from 'react';
-import styles from './styles/selectableCards.style.scss';
 
 interface ISelectableCard {
-  className: string
+  className?: string
   children: any
   selectedValue: any
-  onClick: (event?:any) => void
+  onClick: (event?: any) => void
   variant: string
 }
 
@@ -16,10 +15,10 @@ const SelectableCards = ({
   selectedValue,
   onClick,
   variant
-}:ISelectableCard) => {
+}: ISelectableCard) => {
   return (
     <div className={clsx(
-      styles.selectableCards,
+      "AuiSelectableCards-root",
       className
     )}>
       {Children.map(children, child =>
@@ -38,4 +37,4 @@ const SelectableCards = ({
   )
 }
 
-export { SelectableCards};
+export { SelectableCards };

@@ -1,6 +1,4 @@
-@import '../../../utils/style/_variable.scss';
-
-.buttonRoot {
+.AuiButtonRoot {
   // base
   border: 0;
   cursor: pointer;
@@ -26,7 +24,7 @@
   }
 
   // primary
-  &.buttonPrimary {
+  &.AuiButton-primary {
     color: $primary;
 
     &:hover {
@@ -35,7 +33,7 @@
   }
 
   // secondary
-  &.buttonSecondary {
+  &.AuiButton-secondary {
     color: $secondary;
 
     &:hover {
@@ -44,26 +42,26 @@
   }
 
   // filled
-  &.buttonFilled {
+  &.AuiButton-filled {
     background-color: rgba($dark, 0.05);
 
-    &.buttonPrimary {
+    &.AuiButton-primary {
       background-color: $primary;
       color: $white;
     }
 
-    &.buttonSecondary {
+    &.AuiButton-secondary {
       background-color: $secondary;
       color: $white;
     }
   }
 
-  .buttonWrapper {
+  .AuiButton-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     
-    .spinner {
+    .AuiButton-spinner {
       margin-right: 5px;
     }
   }

@@ -1,8 +1,7 @@
 import React, { memo } from 'react'
-import styles from './form.module.scss'
 import clsx from 'clsx'
 
-interface IFormField{
+interface IFormField {
   id?: any
   className?: string
   label?: string
@@ -26,23 +25,22 @@ const FormField = memo(({
   helperText,
   row,
   isPassword
-}:IFormField) => {
+}: IFormField) => {
   return (
     <div
       className={clsx(
-        styles.formGroup,
-        row && styles.row,
-        error && styles.formGroupError,
-        valid && styles.formGroupValid,
-        loading && styles.formGroupLoading,
-        isPassword && styles.formGroupPassword,
+        "AuiFormGroup",
+        row && "AuiFormGroup-row",
+        error && "AuiFormGroup-error",
+        valid && "AuiFormGroup-valid",
+        loading && "AuiFormGroup-loading",
+        isPassword && "AuiFormGroup-password",
         className,
       )}
     >
       {
         label &&
         <label
-          className={styles.formLabel}
           htmlFor={id}
         >
           {label}
@@ -51,10 +49,10 @@ const FormField = memo(({
       {children}
       {
         helperText &&
-        <small className={styles.helperText}>{helperText}</small>
+        <small className="AuiHelperText">{helperText}</small>
       }
     </div>
   )
 })
 
-export {FormField}
+export { FormField }

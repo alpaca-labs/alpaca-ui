@@ -1,10 +1,8 @@
-@import '../../utils/style/variable';
-
 $small: 15px;
 $medium: 25px;
 $large: 35px;
 
-.loader {
+.AuiSpinner {
   display: inline-block;
   border: 4px solid $white;
   border-radius: 100%;
@@ -35,15 +33,5 @@ $large: 35px;
 
   &.secondary {
     border-color: $secondary;
-  }
-
-  @keyframes spin {
-      0% {
-          transform: rotate(0deg);
-      }
-
-      100% {
-          transform: rotate(360deg);
-      }
   }
 }
