@@ -4,7 +4,7 @@ import React from 'react';
 interface Props {
   className?: string
   size?: 'small' | 'large'
-  color?: 'primary' | 'secondary' | 'dark'
+  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'dark'
 }
 
 const Spinner = ({ className, size, color }: Props) => (

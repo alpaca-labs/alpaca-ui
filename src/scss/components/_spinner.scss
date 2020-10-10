@@ -34,4 +34,16 @@ $large: 35px;
   &.secondary {
     border-color: $secondary;
   }
+
+  &.danger {
+    border-color: $danger;
+  }
+
+  &.warning {
+    border-color: $warning;
+  }
+
+  &.success {
+    border-color: $success;
+  }
 }

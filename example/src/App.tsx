@@ -6,7 +6,7 @@ const passwordRegex = /(?=.*[\d!@#$%*()_\-+={\]};:|/])(?=.*[a-z])/;
 
 const App = () => {
   //main tabs
-  const [activeKey, setActiveKey] = useState(2)
+  const [activeKey, setActiveKey] = useState(0)
 
   //tabs form
   const [activeKeyForm, setActiveKeyForm] = useState(0)
@@ -19,6 +19,7 @@ const App = () => {
 
   const [loadingBtn1, setLoadingBtn1] = useState(false)
   const [loadingBtn2, setLoadingBtn2] = useState(false)
+  const [loadingBtn3, setLoadingBtn3] = useState(false)
 
   useEffect(() => {
     if (input) {
@@ -41,13 +42,29 @@ const App = () => {
             <Button className="mr-20">Default</Button>
             <Button className="mr-20" color="primary">Primary</Button>
             <Button className="mr-20" color="secondary">Secondary</Button>
+            <Button className="mr-20" color="danger">Danger</Button>
+            <Button className="mr-20" color="warning">Warning</Button>
+            <Button className="mr-20" color="success">Success</Button>
+            <br></br>
+            <br></br>
+            <h3>Variant Outlined</h3>
+            <br></br>
+            <Button className="mr-20" variant="outlined">Default</Button>
+            <Button className="mr-20" variant="outlined" color="primary">Primary</Button>
+            <Button className="mr-20" variant="outlined" color="secondary">Secondary</Button>
+            <Button className="mr-20" variant="outlined" color="danger">Danger</Button>
+            <Button className="mr-20" variant="outlined" color="warning">Warning</Button>
+            <Button className="mr-20" variant="outlined" color="success">Success</Button>
             <br></br>
             <br></br>
             <h3>Variant Filled</h3>
             <br></br>
-            <Button className="mr-20" variant="filled">Default</Button>
-            <Button variant="filled" color="primary">Primary</Button>
-            <Button className="ml-20 " variant="filled" color="secondary">Secondary</Button>
+            <Button variant="filled">Default</Button>
+            <Button className="ml-20" variant="filled" color="primary">Primary</Button>
+            <Button className="ml-20" variant="filled" color="secondary">Secondary</Button>
+            <Button className="ml-20" variant="filled" color="danger">Danger</Button>
+            <Button className="ml-20" variant="filled" color="warning">Warning</Button>
+            <Button className="ml-20" variant="filled" color="success">Success</Button>
             <br></br>
             <br></br>
             <h3>With Loading</h3>
@@ -76,6 +93,22 @@ const App = () => {
                 setLoadingBtn2(true)
                 setTimeout(() => {
                   setLoadingBtn2(false)
+                }, 2000);
+              }}
+            >
+              Click to show loading
+            </Button>
+            <br></br>
+            <br></br>
+            <Button
+              className="mr-20"
+              color="danger"
+              variant="outlined"
+              loading={loadingBtn3}
+              onClick={() => {
+                setLoadingBtn3(true)
+                setTimeout(() => {
+                  setLoadingBtn3(false)
                 }, 2000);
               }}
             >
