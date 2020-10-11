@@ -366,8 +366,8 @@ $border: 1px;
     color: $dark-indigo;
   }
 
-  // Primary & Secondary base
-  &.Aui-primary, &.Aui-secondary {
+  // Primary, Secondary, etc base
+  &.Aui-primary, &.Aui-secondary, &.Aui-danger, &.Aui-warning, &.Aui-warning, &.Aui-success {
     .AuiCheckboxWrapper {
       input:checked + .AuiCheckbox {
         border: solid 2px transparent;
@@ -401,6 +401,48 @@ $border: 1px;
       input:checked {
         + .AuiCheckbox, + .AuiRadio {
           background-color: $secondary;
+        }
+      }
+    }
+  }
+
+  //Danger
+  &.Aui-danger {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
+      border: solid 2px $danger;
+    }
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      input:checked {
+        + .AuiCheckbox, + .AuiRadio {
+          background-color: $danger;
+        }
+      }
+    }
+  }
+
+  //Warning
+  &.Aui-warning {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
+      border: solid 2px $warning;
+    }
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      input:checked {
+        + .AuiCheckbox, + .AuiRadio {
+          background-color: $warning;
+        }
+      }
+    }
+  }
+
+  //Success
+  &.Aui-success {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
+      border: solid 2px $success;
+    }
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      input:checked {
+        + .AuiCheckbox, + .AuiRadio {
+          background-color: $success;
         }
       }
     }
