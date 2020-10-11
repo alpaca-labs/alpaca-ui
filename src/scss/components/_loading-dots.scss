@@ -15,9 +15,8 @@ $large: 16px;
     height: $medium;
     border-radius: 100%;
     background-color: $primary;
-    color: $primary;
-    animation: dotFlashing 1s infinite linear alternate;
-    animation-delay: .5s;
+    animation: dotFlashing 700ms infinite ease-in-out alternate;
+    animation-delay: 350ms;
 
     &::before, &::after {
       content: '';
@@ -32,8 +31,7 @@ $large: 16px;
       height: $medium;
       border-radius: 100%;
       background-color: $primary;
-      color: $primary;
-      animation: dotFlashing 1s infinite alternate;
+      animation: dotFlashing 700ms infinite ease-in-out alternate;
       animation-delay: 0s;
     }
 
@@ -43,9 +41,8 @@ $large: 16px;
       height: $medium;
       border-radius: 100%;
       background-color: $primary;
-      color: $primary;
-      animation: dotFlashing 1s infinite alternate;
-      animation-delay: 1s;
+      animation: dotFlashing 700ms infinite ease-in-out alternate;
+      animation-delay: 700ms;
     }
   }
 
