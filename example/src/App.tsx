@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Tab, Tabs, Checkbox, Radio, TextInput, Card, SelectableCards } from 'alpaca-ui'
+import { Button, Tab, Tabs, Checkbox, Radio, TextInput, Card, SelectableCards, RadioGroup } from 'alpaca-ui'
 import './example-main.scss'
 
 const passwordRegex = /(?=.*[\d!@#$%*()_\-+={\]};:|/])(?=.*[a-z])/;
 
 const App = () => {
   //main tabs
-  const [activeKey, setActiveKey] = useState(0)
+  const [activeKey, setActiveKey] = useState(2)
 
   //tabs form
-  const [activeKeyForm, setActiveKeyForm] = useState(0)
+  const [activeKeyForm, setActiveKeyForm] = useState(2)
 
   const [input, setInput] = useState('')
   const [inputPassword, setInputPassword] = useState('')
@@ -20,6 +20,8 @@ const App = () => {
   const [loadingBtn1, setLoadingBtn1] = useState(false)
   const [loadingBtn2, setLoadingBtn2] = useState(false)
   const [loadingBtn3, setLoadingBtn3] = useState(false)
+
+  const [radioGroupValue, setRadioGroupValue] = useState('')
 
   useEffect(() => {
     if (input) {
@@ -59,12 +61,12 @@ const App = () => {
             <br></br>
             <h3>Variant Filled</h3>
             <br></br>
-            <Button variant="filled">Default</Button>
-            <Button className="ml-20" variant="filled" color="primary">Primary</Button>
-            <Button className="ml-20" variant="filled" color="secondary">Secondary</Button>
-            <Button className="ml-20" variant="filled" color="danger">Danger</Button>
-            <Button className="ml-20" variant="filled" color="warning">Warning</Button>
-            <Button className="ml-20" variant="filled" color="success">Success</Button>
+            <Button className="mr-20" variant="filled">Default</Button>
+            <Button className="mr-20" variant="filled" color="primary">Primary</Button>
+            <Button className="mr-20" variant="filled" color="secondary">Secondary</Button>
+            <Button className="mr-20" variant="filled" color="danger">Danger</Button>
+            <Button className="mr-20" variant="filled" color="warning">Warning</Button>
+            <Button className="mr-20" variant="filled" color="success">Success</Button>
             <br></br>
             <br></br>
             <h3>With Loading</h3>
@@ -246,6 +248,12 @@ const App = () => {
                     <br></br>
                     <Checkbox label="Secondary" color="secondary" />
                     <br></br>
+                    <Checkbox label="Danger" color="danger" />
+                    <br></br>
+                    <Checkbox label="Warning" color="warning" />
+                    <br></br>
+                    <Checkbox label="Success" color="success" />
+                    <br></br>
                     <Checkbox label="Disabled" disabled />
                     <br></br>
                     <br></br>
@@ -263,14 +271,43 @@ const App = () => {
                     <br></br>
                     <Radio label="Secondary" color="secondary" />
                     <br></br>
+                    <Radio label="Danger" color="danger" />
+                    <br></br>
+                    <Radio label="Warning" color="warning" />
+                    <br></br>
+                    <Radio label="Success" color="success" />
+                    <br></br>
                     <Radio label="Disabled" color="primary" checked disabled />
                     <br></br>
                     <br></br>
-                    <Radio name="tes" label="tes1" color="secondary" />
+                    <RadioGroup label="Radio Group">
+                      <Radio value="tes1" label="tes1" color="primary" />
+                      <Radio value="tes2" label="tes2" color="primary" />
+                      <Radio value="tes3" label="tes3" color="primary" />
+                    </RadioGroup>
                     <br></br>
-                    <Radio name="tes" label="tes2" color="secondary" />
                     <br></br>
-                    <Radio name="tes" label="tes3" color="secondary" />
+                    <RadioGroup row label="Radio Group Row">
+                      <Radio value="tes1" label="tes1" color="secondary" />
+                      <Radio value="tes2" label="tes2" color="secondary" />
+                      <Radio value="tes3" label="tes3" color="secondary" />
+                    </RadioGroup>
+                    <br></br>
+                    <br></br>
+                    <RadioGroup row label="Radio Group with Default Value" defaultValue="tes1">
+                      <Radio value="tes1" label="tes1" color="success" />
+                      <Radio value="tes2" label="tes2" color="success" />
+                      <Radio value="tes3" label="tes3" color="success" />
+                    </RadioGroup>
+                    <br></br>
+                    <br></br>
+                    <RadioGroup row name="tes" label="Controlled Radio Group" value={radioGroupValue} onChange={(e) => setRadioGroupValue(e.target.value)}>
+                      <Radio value="tes1" label="tes1" color="warning" />
+                      <Radio value="tes2" label="tes2" color="warning" />
+                      <Radio value="tes3" label="tes3" color="warning" />
+                    </RadioGroup>
+                    <br></br>
+                    <small>Statenya: {String(radioGroupValue)}</small>
                   </div>
                 </Tab>
               </Tabs>
