@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
 import clsx from 'clsx'
 
-const useDebouncedRippleCleanUp = (rippleCount: number, cleanUpFunction: any) => {
+const useDebouncedRippleCleanUp = (rippleCount: number, cleanUpFunction: () => void) => {
   useEffect(() => {
     let bounce: any = null;
     if (rippleCount > 0) {
@@ -17,8 +17,11 @@ const useDebouncedRippleCleanUp = (rippleCount: number, cleanUpFunction: any) =>
   }, [rippleCount, cleanUpFunction]);
 };
 
+interface Props {
+  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
+}
 
-const Ripple: React.ForwardRefExoticComponent<Pick<any, string | number | symbol> & React.RefAttributes<unknown>> = forwardRef(({ color }: any, ref) => {
+const Ripple = forwardRef(({ color }: Props, ref: any) => {
   const [rippleArray, setRippleArray]: any[] = useState([])
 
   useDebouncedRippleCleanUp(rippleArray.length, () => {
