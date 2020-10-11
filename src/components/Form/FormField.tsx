@@ -6,8 +6,8 @@ interface IFormField {
   className?: string
   label?: string
   children?: any
-  error?: string
-  valid?: boolean
+  error?: string | boolean
+  valid?: string | boolean
   loading?: boolean
   helperText?: string
   row?: boolean
@@ -41,6 +41,7 @@ const FormField = memo(({
       {
         label &&
         <label
+          className="AuiFormGrouplabel"
           htmlFor={id}
         >
           {label}

@@ -3,19 +3,21 @@ import clsx from 'clsx';
 
 interface Props {
 	id?: string
+	className?: string
 	name?: string
 	label?: string
 	disabled?: boolean
 	onChange?: (data: any) => void
 	value?: string | number
 	checked?: boolean
-	color?: "primary" | "secondary"
+	color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
 	inputProps?: object
 }
 
 const Radio = memo(forwardRef((
 	{
 		id,
+		className,
 		name,
 		label,
 		disabled,
@@ -32,7 +34,8 @@ const Radio = memo(forwardRef((
 			className={clsx(
 				"AuiRadio-root",
 				color && `Aui-${color}`,
-				disabled && "disabled"
+				disabled && "disabled",
+				className
 			)}
 		>
 			<span className="AuiRadioWrapper">

@@ -10,7 +10,7 @@
 	}
 	50%,
 	100% {
-		background-color: lighten($primary, 30%);
+		background-color: rgba($primary, .2);
 	}
 }
 

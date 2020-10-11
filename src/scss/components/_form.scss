@@ -5,8 +5,18 @@ $button-eye-size: 30px;
 $border: 1px;
 
 .AuiFormGroup {
+  &.AuiRadioGroup {
+    border: none;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
-  label {
+    &.row {
+      flex-direction: row;
+    }
+  }
+
+  .AuiFormGrouplabel {
     font-size: 14px;
     font-weight: 600;
     color: $dark-indigo;
@@ -366,8 +376,8 @@ $border: 1px;
     color: $dark-indigo;
   }
 
-  // Primary & Secondary base
-  &.Aui-primary, &.Aui-secondary {
+  // Primary, Secondary, etc base
+  &.Aui-primary, &.Aui-secondary, &.Aui-danger, &.Aui-warning, &.Aui-warning, &.Aui-success {
     .AuiCheckboxWrapper {
       input:checked + .AuiCheckbox {
         border: solid 2px transparent;
@@ -406,10 +416,52 @@ $border: 1px;
     }
   }
 
+  //Danger
+  &.Aui-danger {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
+      border: solid 2px $danger;
+    }
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      input:checked {
+        + .AuiCheckbox, + .AuiRadio {
+          background-color: $danger;
+        }
+      }
+    }
+  }
+
+  //Warning
+  &.Aui-warning {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
+      border: solid 2px $warning;
+    }
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      input:checked {
+        + .AuiCheckbox, + .AuiRadio {
+          background-color: $warning;
+        }
+      }
+    }
+  }
+
+  //Success
+  &.Aui-success {
+    &:hover .AuiCheckboxWrapper .AuiCheckbox, &:hover .AuiRadioWrapper .AuiRadio {
+      border: solid 2px $success;
+    }
+    .AuiCheckboxWrapper, .AuiRadioWrapper {
+      input:checked {
+        + .AuiCheckbox, + .AuiRadio {
+          background-color: $success;
+        }
+      }
+    }
+  }
+
   // Disabled
   &.disabled {
     cursor: auto;
-    
+
     .AuiCheckboxLabel, .AuiRadioLabel {
       color: $soft-grey;
     }

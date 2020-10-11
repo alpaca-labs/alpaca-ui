@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 interface ILoadingDots {
-  size?: 'small' | 'large',
+  size?: 'small' | 'large'
   className?: string
 }
 
