@@ -9,15 +9,12 @@
   font-family: inherit;
   font-size: inherit;
   padding: 10px 16px;
-
   &:focus {
     outline: none;
   }
-
   &:hover {
     background-color: rgba($dark, 0.05);
   }
-
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -26,7 +23,6 @@
   // primary
   &.AuiButton-primary {
     color: $primary;
-
     &:hover {
       background-color: rgba($primary, 0.05);
     }
@@ -35,9 +31,57 @@
   // secondary
   &.AuiButton-secondary {
     color: $secondary;
-
     &:hover {
       background-color: rgba($secondary, 0.05);
+    }
+  }
+
+  // danger
+  &.AuiButton-danger {
+    color: $danger;
+    &:hover {
+      background-color: rgba($danger, 0.05);
+    }
+  }
+
+  // warning
+  &.AuiButton-warning {
+    color: $warning;
+    &:hover {
+      background-color: rgba($warning, 0.05);
+    }
+  }
+
+  // success
+  &.AuiButton-success {
+    color: $success;
+    &:hover {
+      background-color: rgba($success, 0.05);
+    }
+  }
+
+  //outlined
+  &.AuiButton-outlined {
+    border: 1px solid;
+    border-color: rgba($dark, 0.7);
+    &.AuiButton-primary {
+      border-color: rgba($primary, 0.7);
+    }
+
+    &.AuiButton-secondary {
+      border-color: rgba($secondary, 0.7);
+    }
+
+    &.AuiButton-danger {
+      border-color: rgba($danger, 0.7);
+    }
+    
+    &.AuiButton-warning {
+      border-color: rgba($warning, 0.7);
+    }
+
+    &.AuiButton-success {
+      border-color: rgba($success, 0.7);
     }
   }
 
@@ -49,9 +93,23 @@
       background-color: $primary;
       color: $white;
     }
-
     &.AuiButton-secondary {
       background-color: $secondary;
+      color: $white;
+    }
+
+    &.AuiButton-danger {
+      background-color: $danger;
+      color: $white;
+    }
+
+    &.AuiButton-warning {
+      background-color: $warning;
+      color: $white;
+    }
+
+    &.AuiButton-success {
+      background-color: $success;
       color: $white;
     }
   }
@@ -62,6 +120,7 @@
     justify-content: center;
     
     .AuiButton-spinner {
+      flex: 0 0 auto;
       margin-right: 5px;
     }
   }

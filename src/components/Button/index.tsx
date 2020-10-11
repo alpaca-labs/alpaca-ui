@@ -4,12 +4,12 @@ import { Ripple } from '../Ripple/index'
 import Spinner from '../Spinner'
 
 interface IButton {
-  onClick?: any
+  onClick?: (event: any) => void
   children?: any
-  color?: 'primary' | 'secondary'
-  variant?: string
+  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
+  variant?: 'filled' | 'outlined'
   className?: string
-  type?: "button" | "submit" | "reset" | undefined
+  type?: "button" | "submit" | "reset"
   loading?: boolean
   disabled?: boolean
 }
@@ -37,7 +37,7 @@ const Button: React.FC<IButton> = ({
         className,
         "AuiButtonRoot",
         color && `AuiButton-${color}`,
-        variant === 'filled' && "AuiButton-filled"
+        variant && `AuiButton-${variant}`,
       )}
       onClick={handleClick}
       type={type}
@@ -50,7 +50,7 @@ const Button: React.FC<IButton> = ({
         }
         {children}
       </div>
-      <Ripple ref={rippleRef} color={variant === 'filled' ? null : color} />
+      <Ripple ref={rippleRef} color={variant === 'filled' ? undefined : color} />
     </button>
   )
 }
